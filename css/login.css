@@ -1,0 +1,42 @@
+main{
+    background-color: #24353e;
+    min-height: 100vh;
+}
+h1{
+    color:RGB(23, 162, 184);
+    line-height: 48px;
+    font-weight: 500;
+    font-size: 40px;
+    
+}
+section{
+    background-color: #24353e;
+    box-shadow:-5px 2px 54px -9px rgba(0, 0, 0, 1);
+    width: 55% ;
+}
+
+input{
+    background-color: transparent!important;
+    color: #fff !important;
+    font-size: 16px;
+    font-weight: 400px;
+    line-height: 24px;
+
+}
+button{
+    background-color: transparent !important;
+    transition: 350ms;
+}
+body{
+    background-color: #24353e;
+}
+p{
+    font-size: 16px;
+    font-weight: 400px;
+    line-height: 24px;
+}
+
+button:hover{
+   background-color:RGB(23, 162, 184) !important;
+    color: #fff !important;
+}
