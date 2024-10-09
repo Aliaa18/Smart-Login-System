@@ -11,82 +11,107 @@ if(localStorage.getItem("users")!=null){
 function addEmail(){
     if(validationName() && validationEmail()==true && validationPass()==true){
     var user={
-        name:userName.value,
+         name:userName.value,
         email:userEmail.value,
         password:userPass.value,
     }
-    
     userContainer.push(user);
     localStorage.setItem("users",JSON.stringify(userContainer));
-     message.innerHTML="Success!";
-     message.style.color='green';
-     message.classList.remove('d-none')
+    message.innerHTML="success!";
+    message.style.color="green";
+    message.classList.remove('d-none');
+    window.location = './index.html'
     
-} else if(userName.value=='' ||userEmail.value=='' || userPass.value=='') {
-    message.innerHTML='All inputs are required'
-    message.classList.remove('d-none');
-    message.style.color='red';
+         } 
 }
-else{
-    message.innerHTML='incorrect email or password'
-    message.classList.remove('d-none');
-    message.style.color='red';
-}
-}
+var btn=document.getElementById('but')
 
 function validationName(){
+   var nameWarn = document.getElementById('nameWarn')
     var text =userName.value;
-    var regexName = /^[A-z]+$/
+    var regexName = /^[A-z]{2,50}$/
     if(regexName.test(text)){
+      userName.classList.add('is-valid')
+      userName.classList.remove('is-invalid')
+      nameWarn.classList.add('d-none')
+      btn.classList.remove('disabled')
        return true;
     }else {
-     message.innerHTML="incorrect email or password!";
-     message.style.color="red"
-    message.classList.remove('d-none')
+      userName.classList.add('is-invalid')
+      userName.classList.remove('is-valid')
+      nameWarn.classList.remove('d-none')
+      btn.classList.add('disabled')
     return false;
     }
  }
 
 function validationEmail(){
-   var text =userEmail.value;
+   var emailWarn = document.getElementById('emailWarn')
+   var text = userEmail.value;
    var regexName = /^.{5,10}\d{2}(@gmail.com)$/
    if(regexName.test(text)){
+      userEmail.classList.add('is-valid')
+      userEmail.classList.remove('is-invalid')
+      emailWarn.classList.add('d-none')
+      btn.classList.remove('disabled')
       return true;
-      
    }else {
-      
+      userEmail.classList.add('is-invalid')
+      userEmail.classList.remove('is-valid')
+      emailWarn.classList.remove('d-none')
+      btn.classList.add('disabled')
       return false;
    }
 }
 
 function validationPass(){
+   var passWarn = document.getElementById('passWarn')
     var text =userPass.value;
     var regexName = /^.{5,10}\d{2}$/
     if(regexName.test(text)){
-       
-       return true;
+        userPass.classList.add('is-valid')
+      userPass.classList.remove('is-invalid')
+      passWarn.classList.add('d-none')
+      btn.classList.remove('disabled')
+      return true;
        
     }else {
+      userPass.classList.remove('is-valid')
+      userPass.classList.add('is-invalid')
+      passWarn.classList.remove('d-none')
+      btn.classList.add('disabled')
        return false;
     }
  }
- var x = JSON.parse(localStorage.getItem("users"));
- var btn=document.getElementById('but');
-   
-   btn.addEventListener('click' , function(){
-      if(userContainer.length>0){
-         for(var i=0 ; i<userContainer ; i++){
-            if(x[i].email == userEmail.value){
-                message.innerHTML="The email already exist!";
-                message.style.color="red";
-                message.classList.remove('d-none');
-            }else{
-                addEmail();
-            }
-         }
-      }else{
-         addEmail();
-      }
-   }
-   )
+
+  
+  function repeated() {  
+   var flag=0
+              if(userContainer.length>0){ 
+                  //4
+               console.log(userContainer);
+               
+                for(var i=0 ; i<userContainer.length ; i++){ // 0 
+                   if(userContainer[i].email == userEmail.value){
+                            
+                            flag=1
+                   }
+               }
+               if (flag==1) {
+                  message.innerHTML="Email already exist!";
+                  message.style.color="red";
+                  message.classList.remove('d-none');
+                  userName.classList.add('is-invalid')
+                  userEmail.classList.add('is-invalid')
+                  userPass.classList.add('is-invalid')
+                   
+               }else{
+                   addEmail()
+               }
+           }
+          
+}
+btn.addEventListener('click' , function(){
+   repeated()
+})
     

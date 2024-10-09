@@ -5,10 +5,12 @@ var message1=document.getElementById('hint1')
 
 
 var test =localStorage.getItem('sessionName')
+console.log(test);
+
         if(test){
-       document.getElementById('hed').innerHTML="Welcome "+test
+       document.getElementById('hed').innerHTML="Welcome " + test
         }
-function regist(){
+function registered(){
     for(var i=0 ; i<z.length ; i++){
         if(z[i].email == emailInput.value && z[i].password==passInput.value){
             window.location = './home.html'
@@ -30,7 +32,8 @@ var btn1=document.getElementById('but1');
         message1.classList.remove('d-none');
         message1.style.color='red';
     }else{
-        regist();
+        registered();
+      
     }
          }
 

@@ -22,17 +22,21 @@
                    Smart Login System
                </h1>
                 <div>
-      <input id="nameInput" class="form-control my-3" type="text" placeholder=" Enter your name">
+      <input oninput="validationName()" id="nameInput" class="form-control my-3" type="text" placeholder=" Enter your name">
+      <p class="alert alert-dark d-none" id="nameWarn" >User Name must be (from 2 - to 50) character</p>
                 </div>
                 <div>
-     <input id="signUpEmail" class="form-control my-3" type="text" placeholder=" Enter your email">
+    <input oninput="validationEmail()" id="signUpEmail" class="form-control my-3" type="text" placeholder=" Enter your email">
+     <p class="alert alert-dark d-none" id="emailWarn" > invalid email. </p>
                               </div>
                 <div>
-    <input id="signUpPass" class="form-control my-3" type="password" placeholder=" Enter your password">
+    <input oninput="validationPass()" id="signUpPass" class="form-control my-3" type="password" placeholder=" Enter your password">
+    <p class="alert alert-dark d-none" id="passWarn" >Password must be (from 5 - to 10) character and ends with 2 numbers. </p>
+
                              </div>
                 <p id="hint" class="d-none text-center"></p>             
                  <button class="form-control my-3 btn btn-outline-info " id="but">Sign Up</button>   
-                 <p class="text-center text-white">You have an account?<a class="text-white text-decoration-none" href="./index.html"> Sign in</a> </p>         
+  <p class="text-center text-white">You have an account?<a class="text-white text-decoration-none" href="./index.html"> Sign in</a> </p>         
             </section>
    </main>
         
